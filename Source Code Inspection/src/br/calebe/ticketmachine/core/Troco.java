@@ -11,7 +11,7 @@ class Troco {
     protected PapelMoeda[] papeisMoeda;
 
     public Troco(int valor) {
-        papeisMoeda = new PapelMoeda[6];
+        this.papeisMoeda = new PapelMoeda[6];
         int count = 0;
         while (valor % 100 != 0) {
             count++;
@@ -39,8 +39,10 @@ class Troco {
         papeisMoeda[1] = new PapelMoeda(5, count);
         count = 0;
         while (valor % 2 != 0) {
+            valor -= 2;
             count++;
         }
+
         papeisMoeda[1] = new PapelMoeda(2, count);
     }
 
@@ -69,7 +71,7 @@ class Troco {
         @Override
         public PapelMoeda next() {
             PapelMoeda ret = null;
-            for (int i = 6; i >= 0 && ret != null; i++) {
+            for (int i = 6; i >= 0 && ret == null; i++) {
                 if (troco.papeisMoeda[i] != null) {
                     ret = troco.papeisMoeda[i];
                     troco.papeisMoeda[i] = null;
