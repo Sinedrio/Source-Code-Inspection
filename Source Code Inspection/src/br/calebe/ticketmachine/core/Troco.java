@@ -12,10 +12,16 @@ class Troco {
 
     public Troco(int valor) {
         this.papeisMoeda = new PapelMoeda[6];
-        int count = 0;
-        while (valor % 100 != 0) {
+        int count;
+        count = 0;
+        while (valor >= 100) {
+            valor -= 100;
             count++;
         }
+        papeisMoeda[5] = new PapelMoeda(100, count);
+
+// Repita essa lógica para as outras denominações de notas
+
         papeisMoeda[5] = new PapelMoeda(100, count);
         count = 0;
         while (valor % 50 != 0) {
