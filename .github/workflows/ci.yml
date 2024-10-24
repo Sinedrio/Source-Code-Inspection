@@ -2,21 +2,21 @@ name: Java CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master ]  # A branch principal onde o workflow será acionado
   pull_request:
-    branches: [ master ]
+    branches: [ master ]   # O workflow será acionado em PRs para a branch master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '21'
-          distribution: 'adopt'
-      - name: Build with Maven
-        run: mvn clean install
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # Ajuste conforme a versão do JDK que você está usando
+        distribution: 'adopt'
+    - name: Build with Maven
+      run: mvn clean install  # Remova qualquer referência ao working-directory
