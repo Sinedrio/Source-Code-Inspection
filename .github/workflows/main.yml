@@ -2,9 +2,9 @@ name: Java CI
 
 on:
   push:
-    branches: [ master ]  # A branch principal onde o workflow será acionado
+    branches: [ master ]
   pull_request:
-    branches: [ master ]   # O workflow será acionado em PRs para a branch master
+    branches: [ master ]
 
 jobs:
   build:
@@ -16,7 +16,8 @@ jobs:
     - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # Ajuste conforme a versão do JDK que você está usando
+        java-version: '11'
         distribution: 'adopt'
     - name: Build with Maven
-      run: mvn clean install  # Remova qualquer referência ao working-directory
+      run: mvn clean install
+      working-directory: 'Source Code Inspection'  # Ajuste para o diretório correto onde o pom.xml está
